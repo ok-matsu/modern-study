@@ -1,11 +1,57 @@
-
+cd      チェンジディレクトリ
+cd /　　/（ルート）に移動（一番上）
+cd ..   1つ上    
+cd ~　　初期設定のディレクトリ（/home/ユーザ）
+pwd     現在地（デイレクトリ）を表示    
 man	help gitbashにはないのでhelpを使う
 help	help gitbashでは、manの代わり。でも結構、help定義されてないコマンド多い
-pwd 
-dir
+dir　　ディレクトリ一覧表示
+ls     ファイル一覧参照
+ls -al　ファイル一覧参照 
+su    スーパーユーザ(管理者権限）	
+su -  管理者権限でシェル起動
+sudo apt update  スーパーユーザ扱いでコマンド打てる
+　　　　⇒sudo　gitbashでコマンドなし？
+touch aa ファイル作る
+mkdir aa ディレクトリ作る
+rm　　　ファイル消す（ゴミ箱経由しない）
+echo aa　aaと出力
+echo $aa 変数aaの中身を出力
 grep aa f.txt   ファイル(f.txt)内にある文字列（aaa）を含む行を表示
 find . f.txt    .(カレントディレクトリ）配下の　ファイル名 f.txt　を探す
 find . -name 'f*.txt'   . にある　f*.txt というファイル名を探す
+
+＜テキスト表示＞
+cat aa  aaの中身を表示。複数ファイルを続けて見れる（concatinateだから）
+more aa   大きいの見る。gitbashｺﾏﾝﾄﾞなし
+less aa   大きいの見る。ページごと。
+　　　　「エンタ」ページ送り「ctrl+z」終了
+＜文字操作＞
+tr a b < ccc        cccのaをbに変換して取得（表示）
+cut -c 5 aaa 　　　 aaaの5文字目を取得（表示）
+cut -f 2 -d ',' 　　bbb bbbの,(ｶﾝﾏ)で区切った2つ目の文字を取り出す
+paste aaa bbb ccc 　aaa,bbb,cccを行単位で結合
+＜ファイル操作＞
+ls                 ファイルフォルダの表示
+ls /bin            /bin /usr/bin　には重要なｺﾏﾝﾄﾞが設定されている
+ls -R /usr/include /usr/include/に含まれるファイルを再帰的にすべて表示
+　　　　　　　　　 (子ディレクトリ内もすべてls)
+cp A B             コピー　A　⇒　B
+cp -i A B          上書きするか確認あり
+cp -f A B          強制上書き
+cp -R              配下ディレクトリすべてコピー
+　　　　　　　　　（でも普通tarｺﾏﾝﾄﾞで代替するのであまり使わない)
+
+mv A B             移動　A⇒B
+   -i A B　　　　　上書き確認
+   -f A B　　　　　強制上書き
+rm A               Aを削除
+　-i               削除確認
+  -f　　　　　　　 強制削除
+  -R　　　　　　　 大きなフォルダ削除
+rm -R .*           .*  ..*を含む指定になるので、この指定はやっちゃだめ
+　　　　　　　　　（上の階層の子、つまり兄弟フォルダをまとめて削除しちゃう）
+rm -r ﾃﾞｨﾚｸﾄﾘ　　　ﾃﾞｨﾚｸﾄﾘの中身ごと削除
 
 <プロセス管理>
 ps               現在自分が実行しているプロセスを表示
