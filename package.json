@@ -1,0 +1,29 @@
+{
+  "name": "git-tutorial",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "foo": "echo 'Hello from Foo!'",
+    "sass-ver": "sass --version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ok-matsu/modern-study.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ok-matsu/modern-study/issues"
+  },
+  "homepage": "https://github.com/ok-matsu/modern-study#readme",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "sass": "^1.53.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  },
+  "description": ""
+}
