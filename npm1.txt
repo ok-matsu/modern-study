@@ -1,0 +1,145 @@
+<抑えるポイント>
+npmでパッケージ管理するワケ
+npmでのパッケージ管理方法
+npmでのスクリプト実行方法
+npmコマンド、package.json、package-lock.jsonの関係性
+installしたパッケージの使い方
+
+<package.json>
+dependencies　　実行用の依存する外部パッケージ
+devDependencies  開発用の依存する外部パッケージ
+
+
+<コマンドとその結果　20220621>
+$ npm -v　　　　　//バージョン確認
+8.3.1　
+
+$ npm version　　//バージョン確認　詳細
+{
+  ok_ma: '1.0.0',
+  npm: '8.3.1',
+  node: '16.14.0',
+  v8: '9.4.146.24-node.20',
+  uv: '1.43.0',
+  zlib: '1.2.11',
+  brotli: '1.0.9',
+  ares: '1.18.1',
+  modules: '93',
+  nghttp2: '1.45.1',
+  napi: '8',
+  llhttp: '6.0.4',
+  openssl: '1.1.1m+quic',
+  cldr: '40.0',
+  icu: '70.1',
+  tz: '2021a3',
+  unicode: '14.0',
+  ngtcp2: '0.1.0-DEV',
+  nghttp3: '0.1.0-DEV'
+}
+
+$ npm　　　　　　//npmコマンドのヘルプ
+npm <command>
+
+Usage:
+
+npm install        install all the dependencies in your project
+npm install <foo>  add the <foo> dependency to your project    
+npm test           run this project's tests
+npm run <foo>      run the script named <foo>
+npm <command> -h   quick help on <command>
+npm -l             display usage info for all commands
+npm help <term>    search for help on <term> (in a browser)
+npm help npm       more involved overview (in a browser)
+
+All commands:
+
+    access, adduser, audit, bin, bugs, cache, ci, completion,
+    config, dedupe, deprecate, diff, dist-tag, docs, doctor,
+    edit, exec, explain, explore, find-dupes, fund, get, help,
+    hook, init, install, install-ci-test, install-test, link,
+    ll, login, logout, ls, org, outdated, owner, pack, ping,
+    pkg, prefix, profile, prune, publish, rebuild, repo,
+    restart, root, run-script, search, set, set-script,
+    shrinkwrap, star, stars, start, stop, team, test, token,
+    uninstall, unpublish, unstar, update, version, view, whoami
+
+Specify configs in the ini-formatted file:
+    C:\Users\ok_ma\.npmrc
+or on the command line via: npm <command> --key=value
+
+More configuration info: npm help config
+Configuration fields: npm help 7 config
+
+npm@8.3.1 C:\Program Files\nodejs\node_modules\npm
+
+
+★パッケージのインストール方法
+　ローカルインストール　　自分のPCの特定のプロジェクトにのみ有効
+　グローバルインストール　自分のすべてのプロジェクトに有効　
+
+$ npm root -g            //グローバルのnpmのルートの場所を確認するｺﾏﾝﾄﾞ
+C:\Users\ok_ma\AppData\Roaming\npm\node_modules　//npmのrootの場所
+
+$ npm root　　　　　　 　//ローカルプロジェクトのルート確認
+C:\Users\ok_ma\node_modules
+
+$ npm list -g --depth=0　//グローバルのnode_moduesに入っているパッケージ確認
+C:\Users\ok_ma\AppData\Roaming\npm
+├── @google/clasp@2.4.1
+└── @vue/cli@4.5.13
+
+$ npm list 　　　　　　　//ローカルプロジェクトの中身確認⇒空だった
+ok_ma@1.0.0 C:\Users\ok_ma
+└── (empty)
+
+$ npm install パッケージ名
+
+$ npm install のオプション
+   オプション名　短縮　意味
+  --save-prod    -P 　package.json のdependencies追加　本番環境・デフォルト   
+  --save-dev     -D   package.jsonのdevDependencies追加　開発環境
+  --save-optional -O  package.jsonのoptionalDependencies追加　npm installdeでｲﾝｽﾄｰﾙできないときはスキップ
+  --no-save       ﾅｼ  packege.jsonに書きこまない　npm installでｲﾝｽﾄｰﾙできない
+
+  --save-exact   -E   dependencies／devDependenciesのバージョン指定に正確なバージョンのみを依存の対象とする
+
+  -- production       devDependenciesに記載のパッケージはインストールしない（この指定がないとdevDependencies もインストールする）
+
+$ npm help install　　//npmインストールコマンドのヘルプ
+
+$ npm search        　//キーワードに一致するパッケージをnpmリポジトリから探す
+
+$ npm view  パッケージ　//パッケージの作成者、ﾎｰﾑﾍﾟｰｼﾞ、概要など
+
+$ npm view  パッケージ version //パッケージの最新バージョン表示
+$ npm view  パッケージ versions //パッケージのインストール可能バージョン表示
+
+$ npm start      // package script(package.json のscriptにnodeで指定したファイルを実行)の実行
+$ npm run foo    // run-scriptを実行(scriptに直書き
+$ npm run foo --silent   // run-script 実行文言を非表示にし、実行結果のみ出力
+
+$ npm outdated　　// パッケージがアップデートされているものがあるか確認（対象ないのでリプライなし）
+
+$ npm outdated -g -long   //パッケージがアップデートされているものがあるか確認（グローバル）
+Package   Current  Wanted  Latest  Location               Depended by  Package Type  Homepage
+@vue/cli   4.5.13   5.0.8   5.0.8  node_modules/@vue/cli  global       dependencies  https://cli.vuejs.org/
+
+$ npm update vue/cli -g   // からのパッケージアップデート
+
+removed 1174 packages, and audited 1 package in 12s
+
+found 0 vulnerabilities
+
+$ npm outdated -g   // 結果、最新版ありのパッケージなくなる
+
+$ ncu cowsay 'Hello!'   // パッケージの　.bin（実行ファイル）を直で実行
+$ $(npm bin)/cowsay 'Hello!'   // ncu はbinフォルダの配下のパッケージ名を指定するということ
+
+ _____ 
+< Hello！ >
+ -----
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||

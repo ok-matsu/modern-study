@@ -1,0 +1,10 @@
+npm Node.js　のパッケージをを管理するツール
+パッケージ　Node.jsで利用できるJavaScriptのライブラリやフレームワーク
+
+nmp　は
+　パッケージの依存関係も管理・解決できる。
+　パッケージの検索できる
+　パッケージのアンインストールできる
+
+package.json       //dependenciesには、キャレット^　付のバージョン
+package-lock.json  //dependencies には、特定のパッケージ名
