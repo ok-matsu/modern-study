@@ -1,1 +1,1 @@
-console.log('Hello npm!')
+console.log(moment())
