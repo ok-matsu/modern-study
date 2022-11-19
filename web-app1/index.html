@@ -2,26 +2,22 @@
 <html>
   <head>
     <base target="_top">
-    <script>
-      //　テスト確認用
-        let counter,n;
-        function AddCounter(){
-          n ++;
-          disp_count.innerHTML = n;
-        //  alert(n);
-        }
-        function ResetCounter(){
-            n = 0;
-            disp_count.innerHTML = n;
-        }
-      </script>
   </head>
   <body>
     <p id="disp_count">1</p> 
     <input type = "button" value = "＋１する" id="btn_count_up" onclick="AddCounter();"> 
     <input type = "button" value = "リセット" id="btn_reset" onclick="ResetCounter();"> 
     <script>
-        n=1;
+      let n;
+      n=1;
+      function AddCounter(){
+        n ++;
+        disp_count.innerHTML = n;
+      }
+      function ResetCounter(){
+        n = 0;
+        disp_count.innerHTML = n;
+      }
     </script>
-</body>
+  </body>
 </html>
