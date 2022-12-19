@@ -2,6 +2,35 @@
 <html>
   <head>
     <base target="_top">
+    <style>
+      body 
+      { color:orange;
+        margin:auto;
+        text-align:center;
+      }
+      #disp_count {
+        border-top:double 5px black;
+        border-bottom:double 5px black;
+        padding:0.2em 0.1em;
+        margin:auto auto;
+        width:150px;
+        background-color: whitesmoke;
+        text-align:center;
+        font-size: 40px;
+      }
+      #btn_count_up {
+        color: #fff;
+        background-color: #eb6100;
+        padding:1em 0.5em;
+        margin:1em 0em;
+      }
+      #btn_reset {
+        color:#eb6100;
+        background-color: #fff;
+        padding:1em 0.5em;
+        margin:1em 0em;
+      }
+    </style>
   </head>
   <body>
     <p id="disp_count">1</p> 
@@ -9,7 +38,7 @@
     <input type = "button" value = "リセット" id="btn_reset" onclick="ResetCounter();">
     <script>
       let n;
-      n=1;
+      n = 1;
       function AddCounter(){
         n ++;
         disp_count.innerHTML = n;
